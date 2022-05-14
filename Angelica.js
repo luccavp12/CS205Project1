@@ -248,12 +248,6 @@ function queueingFunction(flag, prevNodes, newNodes) {
         else {
             duplicates.push(newNodes[i].state)
         }
-        // if (newNodes[i].state in duplicates) {
-        //     newNodes.splice(i, 1);
-        // }
-        // else {
-        //     duplicates.push(newNodes[i].state);
-        // }
     }
     if (flag == 1) {
         prevNodes.concat(newNodes);
@@ -267,23 +261,13 @@ function queueingFunction(flag, prevNodes, newNodes) {
         prevNodes.concat(newNodes)
 
         console.log(typeof prevNodes.queue)
-        // prevNodes.queue.sort();
         prevNodes.queue.sort(function(a, b) {
             return b.f - a.f;
         })
-        // prevNodes.queue.reverse();
 
         winnerF = prevNodes.queue[prevNodes.queue.length - 1].f
 
         tieBreakers = []
-        // for (i in prevNodes.queue.reverse()) {
-        //     if (i.f == winnerF) {
-        //         tieBreakers.push(prevNodes.queue.pop())
-        //     }
-        //     else {
-        //         break;
-        //     }
-        // }
 
         for (let i = prevNodes.queue.length - 1; i > 0; i--) {
             if (prevNodes.queue[i].f == winnerF) {
@@ -306,24 +290,14 @@ function queueingFunction(flag, prevNodes, newNodes) {
             newNodes[i].calcF()
         }
         prevNodes.concat(newNodes);
-        // prevNodes.sort();
         prevNodes.queue.sort(function(a, b) {
             return b.f - a.f;
         })
-        // prevNodes.reverse();
 
         winnerF = prevNodes.queue[prevNodes.queue.length - 1].f
-        // winnerF = prevNodes.queue[-1].f
 
         tieBreakers = []
-        // for (i in prevNodes.queue.reverse()) {
-        //     if (i.f == winnerF) {
-        //         tieBreakers.push(prevNodes.queue.pop())
-        //     }
-        //     else {
-        //         break;
-        //     }
-        // }
+        
         for (let i = prevNodes.queue.length - 1; i > 0; i--) {
             if (prevNodes.queue[i].f == winnerF) {
                 tieBreakers.push(prevNodes.queue.pop())
@@ -334,7 +308,6 @@ function queueingFunction(flag, prevNodes, newNodes) {
         }
         tieBreakers.sort()
         tieBreakers.reverse()
-        // prevNodes.queue = prevNodes.queue + tieBreakers
         prevNodes.queue = prevNodes.queue.concat(tieBreakers)
 
         return prevNodes
@@ -366,7 +339,6 @@ function generalSearch(problem, queueingFunctionFlag) {
             return currNode;
         }
         
-        // console.log(typeof nodes.queue);
         // calls the queueing function, passes in the flag for the type of queueing function, the original nodes,
         // and the expanded children. The expand function uses the current node and the problem operators
         nodes = queueingFunction(queueingFunctionFlag, nodes, expand(currNode, problem.operators));
@@ -379,79 +351,39 @@ function generalSearch(problem, queueingFunctionFlag) {
 }
   
 function userInput() {
-    console.log("Welcome to Luccap's Angelica puzzle solver. Type “1” to use a premade puzzle, or “2” to enter your own puzzle.");
-    var puzzleSelection = prompt();
-    // puzzleSelection = 1;
+    console.log("Welcome to Luccap's Angelica puzzle solver!");
 
-    if (puzzleSelection == 1) {
-        console.log("\nEnter your choice of algorithm:\n1. Uniform Cost Search\n2. A* with the Misplaced Tile heuristic\n3. A* with the Manhattan distance heuristic");
-        var algoChoice = prompt();
-        // algoChoice = 2;
-        console.log("");
+    console.log("\nEnter your choice of algorithm:\n1. Uniform Cost Search\n2. A* with the Misplaced Tile heuristic\n3. A* with the Manhattan distance heuristic");
+    var algoChoice = prompt();
+    // algoChoice = 2;
+    console.log("");
 
-        // Creates the Problem object by passing in the default game board
-        problem = new Problem(DEFAULT_PUZZLE)
+    // Creates the Problem object by passing in the default game board
+    problem = new Problem(DEFAULT_PUZZLE)
 
-        // Adds the first state to the list of duplicates
-        duplicates = [problem.initialState]
+    // Adds the first state to the list of duplicates
+    duplicates = [problem.initialState]
 
-        // Starts program timer
-        let t0 = Date.now();
+    // Starts program timer
+    let t0 = Date.now();
 
-        // Runs general search algorithm and returns the result node/boolean
-        Result = generalSearch(problem, algoChoice)
+    // Runs general search algorithm and returns the result node/boolean
+    Result = generalSearch(problem, algoChoice)
 
-        // Ends program timer
-        let t1 = Date.now();
-        
-        // Calculate time elapsed
-        totalTime = t1-t0
-        console.log("Time elapsed: " + totalTime + " milliseconds")
-        return Result
-    }
-    else if (puzzleSelection == 2) {
-        console.log("Enter your puzzle");
-        console.log("Enter your first row, use space between letters");
-        firstRow = prompt();
-        console.log("Enter the second row, use space between letters");
-        secondRow = prompt();
-        console.log("Enter the third row, use space between letters");
-        thirdRow = prompt();
-
-        // # Take string inputs, split them into strings, and then map the strings to ints, finally putting them all in a list
-        // x = [list(map(int, firstRow.split())), list(map(int, secondRow.split())), list(map(int, thirdRow.split()))]
-        // Problem = Problem(x)
-        // duplicates = [Problem.initialState]
-        
-        // algoChoice = input("Enter your choice of algorithm:\n1. Uniform Cost Search\n2. A* with the Misplaced Tile heuristic\n3. A* with the Manhattan distance heuristic\n")
-        
-        // t0 = time.time()
-        // Result = generalSearch(Problem, int(algoChoice))
-        // t1 = time.time()
-        // totalTime = t1-t0
-        // print("Time elapsed: " + str(totalTime) + " seconds")
-        // return Result
-    }
-
-
-
-
-    return Problem
+    // Ends program timer
+    let t1 = Date.now();
+    
+    // Calculate time elapsed
+    totalTime = t1-t0
+    console.log("Time elapsed: " + totalTime + " milliseconds")
+    return Result
 }
 
-
-
 Result = userInput()
+
 console.log(Result);
+
 Result.printBoard();
+
 console.log("Result.depth: " + Result.g);
 console.log("Max Queue Length: " + maxQueueLength);
-// if (Result == false) {
-//     console.log("Failed to find a solution");
-// }
-// else {
-//     Result.printBoard()
-//     console.log("Result.depth: " + Result.g);
-//     console.log("Max Queue Length: " + maxQueueLength);
-// }
-

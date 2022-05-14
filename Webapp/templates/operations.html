@@ -1,0 +1,178 @@
+<!doctype html>
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/operations.css') }}">
+    <!-- <script src="{{ url_for('static', filename='JS/operations.js') }}"></script> -->
+    <script src="https://unpkg.com/whatwg-fetch@2.0.4/fetch.js"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <script type="text/javascript"> var urlForAlgo = "{{ url_for('operationsAlgorithm') }}"; </script>
+    <script type="text/javascript"> var urlForExportManifest = "{{ url_for('exportManifest') }}"; </script>
+    <script type="text/javascript"> var urlForCommentLog = "{{ url_for('commentLog') }}"; </script>
+    <script type="text/javascript"> var urlForStepSaveOperations = "{{ url_for('stepSaveOperations') }}"; </script>
+</head>
+<title>CS179M Project</title>
+
+<div id="homeContainer">
+    <form action="{{ url_for('home') }}" method="POST">
+            <input id="homeButton" type="submit" value="Home">
+    </form>
+</div>
+
+<h1>Load and Unload</h1>
+
+<body>
+
+    <div id="headerContainer">
+        <div id="modeButtonContainer">
+            <div id="loadingButton">
+                <p>Loading</p>
+            </div>
+            <div id="unloadingButton">
+                <p>Unloading</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="helpDisplayContainer">
+        <div id="helpDisplay">
+            <p id="helpDisplayText"></p>
+        </div>
+    </div>    
+
+    <div id="gridContainer">
+
+        <div id="informationInputContainer">
+            <div id="informationInput">
+                <p class="inputTextTitle">Input Container Data</p>
+                <p class="inputText">Name</p>
+                <input class="inputField" id="nameInput" type="text">
+                <p class="inputText">Weight</p>
+                <input class="inputField" id="weightInput" type="text">
+                <input type="button" value="Submit" id="inputSubmitButton">
+            </div>
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[84:96] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[72:84] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[60:72] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[48:60] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[36:48] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[24:36] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[12:24] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[0:12] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="footerContainer">
+        <div id="finishButtonContainer">
+            <div id="timeContainer">
+                <div id="timeDisplay">
+                    Estimated Time at Finish
+                </div>
+            </div>
+            <form id="finishSubmissionForm">
+                <input type="submit" value="Finish" id="finishButton">
+            </form>
+            <input type="button" value="Next" id="nextButton">
+        </div>
+    </div>
+
+    <div id="commentContainer">
+        <div id="comment">
+            <textarea id="commentInput" cols="30" rows="10" placeholder="Insert Comments"></textarea>
+            <div id="commentInputSubmissionContainer">
+                <div id="commentInputSubmission">
+                    <p id="submitCommentText">Submit Comment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="{{ url_for('static', filename='JS/operations.js') }}"></script>

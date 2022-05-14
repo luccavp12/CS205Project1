@@ -1,0 +1,47 @@
+<!doctype html>
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/uniformCostSearch.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<title>Uniform cost Search</title>
+Uniform Cost Search
+<body>
+     <div id="gridContainer">
+        <div class="rowContainer">
+            {% for i in text[24:36] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>     
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="rowContainer">
+            {% for i in text[24:36] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>     
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="rowContainer">
+            {% for i in text[24:36] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>     
+                </div>
+            {% endfor %}
+        </div>
+
+     </div>
+</body>

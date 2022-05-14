@@ -1,0 +1,34 @@
+<!doctype html>
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<title>CS179M Project</title>
+
+<body>
+    <div id="shiftChangeContainer">
+        <form action="{{ url_for('sign_in') }}" method="POST">
+            <!-- <div id="shiftChange"> -->
+                <input id="shiftChange" type="submit" value="Logout">
+                <!-- </div> -->
+        </form>
+    </div>
+        
+    <h1>Select which operation you would like to do</h1>
+
+    <div class="container">    
+        <div id="optionsContainer">
+            <a href="{{ url_for('balance') }}">
+                <div id="balanceShipButton">
+                    <p class="buttonText">Balance Ship</p>
+                </div>
+            </a>
+
+            <a href="{{ url_for('operations') }}">
+                <div id="loadUnloadShipButton">
+                    <p class="buttonText">Load/Unload Ship</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,160 @@
+<!doctype html>
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/balance.css') }}">
+    <!-- <script src="{{ url_for('static', filename='JS/operations.js') }}"></script> -->
+    <script src="https://unpkg.com/whatwg-fetch@2.0.4/fetch.js"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <script type="text/javascript"> var urlForAlgo = "{{ url_for('balanceAlgorithm') }}"; </script>
+    <script type="text/javascript"> var urlForExportManifest = "{{ url_for('exportManifest') }}"; </script>
+    <script type="text/javascript"> var urlForCommentLog = "{{ url_for('commentLog') }}"; </script>
+    <script type="text/javascript"> var urlForStepSave = "{{ url_for('stepSaveBalance') }}"; </script>
+</head>
+<title>CS179M Project</title>
+
+<div id="homeContainer">
+    <form action="{{ url_for('home') }}" method="POST">
+            <input id="homeButton" type="submit" value="Home">
+    </form>
+</div>
+
+<h1>Balance</h1>
+
+<body>
+
+    <div id="helpDisplayContainer">
+        <div id="helpDisplay">
+            <p id="helpDisplayText"></p>
+        </div>
+    </div>
+
+    <div id="gridContainer">
+
+        <div id="informationInputContainer">
+            <div id="informationInput">
+                <p class="inputTextTitle">Ready to Balance?</p>
+                <input type="button" value="Yes" id="inputSubmitButton">
+            </div>
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[84:96] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[72:84] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[60:72] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[48:60] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[36:48] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[24:36] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[12:24] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="rowContainer">
+            {% for i in text[0:12] %}
+                <div class="containerButtonContainer">
+                    <div class="containerButton" id="{{ i.position }}">
+                        <p class="positionDisplay">{{i.position}}</p>
+                        <p class="weightDisplay">{{i.weight}}</p>
+                        <p class="descriptionDisplay">{{i.description}}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="footerContainer">
+        <div id="nextButtonContainer">
+            <div id="timeContainer">
+                <div id="timeDisplay">
+                    Estimated Time at Finish
+                </div>
+            </div>
+            <input type="button" value="Next" id="nextButton">
+        </div>
+    </div>
+
+    <div id="commentContainer">
+        <div id="comment">
+            <textarea id="commentInput" cols="30" rows="10" placeholder="Insert Comments"></textarea>
+            <div id="commentInputSubmissionContainer">
+                <div id="commentInputSubmission">
+                    <p id="submitCommentText">Submit Comment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="{{ url_for('static', filename='JS/balance.js') }}"></script>

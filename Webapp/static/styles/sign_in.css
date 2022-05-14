@@ -1,0 +1,26 @@
+body {
+    background-color: rgb(151, 151, 151);
+    font-size: 40px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.center {
+    margin: auto;
+    width: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+#loginUsernameInput {
+    margin-top: 30px;
+    height: 50px;
+    width: 300px;
+    font-size: 40px;
+}
+
+#loginSubmitButton {
+    margin: 50px;
+    height: 75px;
+    width: 300px;
+    font-size: 40px;
+}
